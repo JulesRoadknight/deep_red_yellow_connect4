@@ -2,23 +2,23 @@
 
 ## Progress
 
-# Deep Red & Yellow
+## Deep Red & Yellow
 
 
-# Technologies
+## Technologies
 
 - Python
 - Pygame
 - easyAI
 
-# Installation & Testing
+## Installation & Testing
 
 TBU
 
-# Documentation
+## Documentation
 
 TBU
 
-# Contributing
+## Contributing
 
 TBU
