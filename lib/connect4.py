@@ -1,16 +1,23 @@
+import board 
 class Connect4():
 
     def __init__(self):
-        self.playing_board = [["-,-,-,-,-,-,-"],
-            ["-,-,-,-,-,-,-"],
-            ["-,-,-,-,-,-,-"],
-            ["-,-,-,-,-,-,-"],
-            ["-,-,-,-,-,-,-"],
-            ["-,-,-,-,-,-,-"],
-            ["-,-,-,-,-,-,-"]
-    ]
+        self.board = board.Board()
+
+    #     self.playing_board = [["-,-,-,-,-,-,-"],
+    #         ["-,-,-,-,-,-,-"],
+    #         ["-,-,-,-,-,-,-"],
+    #         ["-,-,-,-,-,-,-"],
+    #         ["-,-,-,-,-,-,-"],
+    #         ["-,-,-,-,-,-,-"],
+    #         ["-,-,-,-,-,-,-"]
+    # ]
+
+    def show_board(self):
+        return self.board.show()
 
     def start(self):
+
         print("Player 1 wins")
         return self.playing_board
 
@@ -20,5 +27,3 @@ class Connect4():
         return True
 # comment for commit
 
-c4 = Connect4()
-c4.start()
