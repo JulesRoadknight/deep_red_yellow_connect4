@@ -4,13 +4,15 @@ import os
 
 sys.path.insert(0, os.path.abspath("lib"))
 
-import connect4 as c4 
+import connect4 as c4
 
 def test_simplest_player1_win():
-    input_values = [6, 7, 6, 7, 6, 7, 6]
+
     output = []
+    input_values = [6, 7, 6, 7, 6, 7, 6]
 
     def mock_input(s):
+        output.append(s)
         return input_values.pop(0)
 
     c4.input = mock_input
@@ -21,10 +23,13 @@ def test_simplest_player1_win():
     assert output.count("Player 1 wins") == 1
 
 def test_simplest_player2_win():
-    input_values = [6, 7, 6, 7, 6, 7, 5, 7]
+
     output = []
+    input_values = [6, 7, 6, 7, 6, 7, 5, 7]
 
     def mock_input(s):
+
+        output.append(s)
         return input_values.pop(0)
 
     c4.input = mock_input
