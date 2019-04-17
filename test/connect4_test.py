@@ -1,8 +1,9 @@
 import pytest
 import sys
+import os
 #0 implies to look at this location first and tells where to look for the modules
 #
-sys.path.insert(0, '/Users/student/Documents/Project_Connect4/lib')
+sys.path.insert(0, os.path.abspath("lib"))
 
 from connect4 import Connect4 as c4# from connect4 import Connect4
 
