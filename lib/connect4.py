@@ -8,9 +8,10 @@ class Connect4():
             ["-,-,-,-,-,-,-"],
             ["-,-,-,-,-,-,-"],
             ["-,-,-,-,-,-,-"]
-    ]  
+    ]
 
     def start(self):
+        print("Player 1 wins")
         return self.playing_board
 
     def move(self, player, column):

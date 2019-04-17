@@ -16,13 +16,14 @@ def test_simplest_win():
     def mock_input(s):
         return input_values.pop(0)
 
-    c4.Connect4.input = mock_input
-    c4.Connect4.print = lambda s : output.append(s)
-    c4.Connect4.start()
+    c4.input = mock_input
+    c4.print = lambda s : output.append(s)
+    game = c4.Connect4()
+    game.start()
+    print(output)
+    assert output.count("Player 1 wins") == 1
 
-    assert output.count(["Player 1 wins"]) == 1
-
-def test_c4_start(self):
+def test_c4_start():
     mock_board = [["-,-,-,-,-,-,-"],
             ["-,-,-,-,-,-,-"],
             ["-,-,-,-,-,-,-"],
@@ -30,9 +31,10 @@ def test_c4_start(self):
             ["-,-,-,-,-,-,-"],
             ["-,-,-,-,-,-,-"],
             ["-,-,-,-,-,-,-"]
-    ]   
-    assert c4.Connect4.start().playing_board == mock_board 
-    # assert c4.start.board.playing_board.count == 1 
+    ]
+    game = c4.Connect4()
+    assert game.start() == mock_board
+    # assert c4.start.board.playing_board.count == 1
     # c4.move(1, 6) # c4.move(player, column number)
     # c4.move(2, 7)
     # c4.move(1, 6)
