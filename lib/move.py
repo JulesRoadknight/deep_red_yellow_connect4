@@ -22,7 +22,7 @@ class Move():
 
     def check_win(self):
         if len(self.player1) > 3 :
-            return self.check_vertical() or self.check_horizontal()
+            return self.check_vertical() or self.check_horizontal() or self.check_diagonal()
         return False
 
     def check_vertical(self):
@@ -68,3 +68,15 @@ class Move():
         if row.count([3,last_move[1]]) == 1 and row.count([4,last_move[1]]) == 1 and row.count([5,last_move[1]]) == 1 and row.count([6,last_move[1]]) == 1:
             return True
         return False
+
+    def check_diagonal(self):
+        
+        if self.player == 1:
+            last_move = self.player1[0]
+        else:
+            last_move = self.player2[0]
+    
+        if self.player1.count([last_move[0]-1, last_move[1]-1]) == 1 and self.player1.count([last_move[0]-2,last_move[1]-2]) == 1 and self.player1.count([last_move[0]-3, last_move[1]-3]) == 1:
+            return True
+        return False
+    
