@@ -21,7 +21,9 @@ class Move():
         return move
 
     def check_win(self):
-        return self.check_vertical()
+        if len(self.player1) > 3 :
+            return self.check_vertical() or self.check_horizontal()
+        return False
 
     def check_vertical(self):
         array = []
@@ -45,3 +47,19 @@ class Move():
             return True
         else:
             return False
+
+    def check_horizontal(self):
+        last_move = self.player1[0]
+        array = []
+        for coords in self.player1:
+            if coords[1] == last_move[1]: array.append(coords)
+        print(array)
+        if array.count([0,last_move[1]]) == 1 and array.count([1,last_move[1]]) == 1 and array.count([2,last_move[1]]) == 1 and array.count([3,last_move[1]]) == 1:
+            return True
+        if array.count([1,last_move[1]]) == 1 and array.count([2,last_move[1]]) == 1 and array.count([3,last_move[1]]) == 1 and array.count([4,last_move[1]]) == 1:
+            return True
+        if array.count([2,last_move[1]]) == 1 and array.count([3,last_move[1]]) == 1 and array.count([4,last_move[1]]) == 1 and array.count([5,last_move[1]]) == 1:
+            return True
+        if array.count([3,last_move[1]]) == 1 and array.count([4,last_move[1]]) == 1 and array.count([5,last_move[1]]) == 1 and array.count([6,last_move[1]]) == 1:
+            return True
+        return False 
