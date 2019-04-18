@@ -7,7 +7,8 @@ class Connect4():
     def start(self):
         player = 2
         not_over = True
-        while not_over :
+        turn = 1
+        while not_over and turn <= 42 :
             if player == 1 :
                 player = 2
             else:
@@ -15,7 +16,11 @@ class Connect4():
             self.move(player,input("Make your move")-1)
             self.show_board()
             not_over = not self.gameover()
-        print(f'Player {player} wins')
+            turn += 1
+        if not_over == True:
+            print("It's a Draw!")
+        else:
+            print(f'Player {player} wins')
 
     def show_board(self):
         return self.game_board.show()

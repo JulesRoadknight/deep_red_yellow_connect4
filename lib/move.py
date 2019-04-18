@@ -73,24 +73,25 @@ class Move():
 
         if self.player == 1:
             last_move = self.player1[0]
+            moves_to_check = self.player1
         else:
             last_move = self.player2[0]
-        print(self.player1)
+            moves_to_check = self.player2
 
-        if self.player1.count([last_move[0]-1, last_move[1]-1]) == 1 and self.player1.count([last_move[0]-2,last_move[1]-2]) == 1 and self.player1.count([last_move[0]-3, last_move[1]-3]) == 1:
+        if moves_to_check.count([last_move[0]-1, last_move[1]-1]) == 1 and moves_to_check.count([last_move[0]-2,last_move[1]-2]) == 1 and moves_to_check.count([last_move[0]-3, last_move[1]-3]) == 1:
             return True
-        if self.player1.count([last_move[0]-1, last_move[1]-1]) == 1 and self.player1.count([last_move[0]-2,last_move[1]-2]) == 1 and self.player1.count([last_move[0]+1, last_move[1]+1]) == 1:
+        if moves_to_check.count([last_move[0]-1, last_move[1]-1]) == 1 and moves_to_check.count([last_move[0]-2,last_move[1]-2]) == 1 and moves_to_check.count([last_move[0]+1, last_move[1]+1]) == 1:
             return True
-        if self.player1.count([last_move[0]-1, last_move[1]-1]) == 1 and self.player1.count([last_move[0]+2,last_move[1]+2]) == 1 and self.player1.count([last_move[0]+1, last_move[1]+1]) == 1:
+        if moves_to_check.count([last_move[0]-1, last_move[1]-1]) == 1 and moves_to_check.count([last_move[0]+2,last_move[1]+2]) == 1 and moves_to_check.count([last_move[0]+1, last_move[1]+1]) == 1:
             return True
-        if self.player1.count([last_move[0]+3, last_move[1]+3]) == 1 and self.player1.count([last_move[0]+2,last_move[1]+2]) == 1 and self.player1.count([last_move[0]+1, last_move[1]+1]) == 1:
+        if moves_to_check.count([last_move[0]+3, last_move[1]+3]) == 1 and moves_to_check.count([last_move[0]+2,last_move[1]+2]) == 1 and moves_to_check.count([last_move[0]+1, last_move[1]+1]) == 1:
             return True
-        if self.player1.count([last_move[0]+1, last_move[1]-1]) == 1 and self.player1.count([last_move[0]+2,last_move[1]-2]) == 1 and self.player1.count([last_move[0]+3, last_move[1]-3]) == 1:
+        if moves_to_check.count([last_move[0]+1, last_move[1]-1]) == 1 and moves_to_check.count([last_move[0]+2,last_move[1]-2]) == 1 and moves_to_check.count([last_move[0]+3, last_move[1]-3]) == 1:
             return True
-        if self.player1.count([last_move[0]+1, last_move[1]-1]) == 1 and self.player1.count([last_move[0]+2,last_move[1]-2]) == 1 and self.player1.count([last_move[0]-1, last_move[1]+1]) == 1:
+        if moves_to_check.count([last_move[0]+1, last_move[1]-1]) == 1 and moves_to_check.count([last_move[0]+2,last_move[1]-2]) == 1 and moves_to_check.count([last_move[0]-1, last_move[1]+1]) == 1:
             return True
-        if self.player1.count([last_move[0]+1, last_move[1]-1]) == 1 and self.player1.count([last_move[0]-2,last_move[1]+2]) == 1 and self.player1.count([last_move[0]-1, last_move[1]+1]) == 1:
+        if moves_to_check.count([last_move[0]+1, last_move[1]-1]) == 1 and moves_to_check.count([last_move[0]-2,last_move[1]+2]) == 1 and moves_to_check.count([last_move[0]-1, last_move[1]+1]) == 1:
             return True
-        if self.player1.count([last_move[0]-3, last_move[1]+3]) == 1 and self.player1.count([last_move[0]-2,last_move[1]+2]) == 1 and self.player1.count([last_move[0]-1, last_move[1]+1]) == 1:
+        if moves_to_check.count([last_move[0]-3, last_move[1]+3]) == 1 and moves_to_check.count([last_move[0]-2,last_move[1]+2]) == 1 and moves_to_check.count([last_move[0]-1, last_move[1]+1]) == 1:
             return True
         return False
