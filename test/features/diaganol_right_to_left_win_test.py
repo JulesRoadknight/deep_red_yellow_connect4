@@ -53,3 +53,19 @@ def test_diaganol_win_for_player1_from_bottom_right_corner_to_middle_with_last_p
     game.start()
 
     assert output.count("Player 1 wins") == 1
+
+def test_diaganol_win_for_player1_from_bottom_right_corner_to_middle_with_last_piece_at_bottom():
+    output = []
+    input_values = [5, 6, 6, 5, 5, 4, 4, 4, 4, 3, 7]
+
+    def mock_input(s):
+        output.append(s)
+        return input_values.pop(0)
+
+    c4.input = mock_input
+    c4.print = lambda s : output.append(s)
+
+    game = c4.Connect4()
+    game.start()
+
+    assert output.count("Player 1 wins") == 1
