@@ -13,7 +13,8 @@ class Connect4():
                 player = 2
             else:
                 player = 1
-            self.move(player,input("Make your move")-1)
+            player_choice = int(input("Make your move"))
+            self.move(player, player_choice - 1)
             self.show_board()
             not_over = not self.gameover()
             turn += 1
