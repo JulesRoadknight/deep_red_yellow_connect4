@@ -4,9 +4,6 @@ class Move():
         self.player1 = []
         self.player2 = []
 
-    def add_legal_move(self, coords):
-        self.legal_moves.insert(coords[0], coords)
-
     def save_move(self, player, legal_move_index):
         self.player = player
         if player == 1:
