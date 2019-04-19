@@ -1,0 +1,2 @@
+from gym_connect.envs.connect_env import ConnectEnv
+from gym_connect.envs.connect_extrahard_env import ConnectExtraHardEnv
