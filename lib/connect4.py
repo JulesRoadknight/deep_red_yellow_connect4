@@ -32,6 +32,10 @@ class Connect4():
 
 
     def move(self, player):
+        i = len(self.game_board.game_board)-1
+        while i > -1:
+            print(self.game_board.game_board[i])
+            i -= 1
         player_choice = int(input("Make your move: "))
         if player_choice > 7 or player_choice < 1:
                 print("Please enter a number from 1-7")
