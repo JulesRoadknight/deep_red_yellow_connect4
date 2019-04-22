@@ -1,8 +1,10 @@
 import board
+import move
 class Connect4():
 
     def __init__(self):
         self.game_board = board.Board()
+        self.moves = self.game_board.moves
 
     def start(self):
         player = 2
@@ -30,10 +32,14 @@ class Connect4():
 
 
     def move(self, player):
-        player_choice = int(input("Make your move"))
+        player_choice = int(input("Make your move: "))
         if player_choice > 7 or player_choice < 1:
-            print("Please enter a number from 1-7")
-            self.move(player)
+                print("Please enter a number from 1-7")
+                self.move(player)
         else:
-            self.game_board.make_move(player, player_choice-1)
+            if self.moves.legal_moves[player_choice-1] == "Full":
+                print("That column is full, please choose again.")
+                self.move(player)
+            else:
+                self.game_board.make_move(player, player_choice-1)
 # comment for commit
