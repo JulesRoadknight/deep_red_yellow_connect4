@@ -13,8 +13,7 @@ class Connect4():
                 player = 2
             else:
                 player = 1
-            player_choice = int(input("Make your move"))
-            self.move(player, player_choice - 1)
+            self.move(player)
             self.show_board()
             not_over = not self.gameover()
             turn += 1
@@ -30,6 +29,11 @@ class Connect4():
         return self.game_board.moves.check_win()
 
 
-    def move(self, player, legal_move_index):
-        self.game_board.make_move(player, legal_move_index)
+    def move(self, player):
+        player_choice = int(input("Make your move"))
+        if player_choice > 7 or player_choice < 1:
+            print("Please enter a number from 1-7")
+            self.move(player)
+        else:
+            self.game_board.make_move(player, player_choice-1)
 # comment for commit
