@@ -16,12 +16,15 @@ class Connect4():
             else:
                 player = 1
             self.move(player)
-            self.show_board()
+            # print(self.show_board())
             not_over = not self.gameover()
             turn += 1
+        # self.show_board()
+
         if not_over == True:
             print("It's a Draw!")
         else:
+            self.show_board()
             print(f'Player {player} wins')
 
     def show_board(self):
