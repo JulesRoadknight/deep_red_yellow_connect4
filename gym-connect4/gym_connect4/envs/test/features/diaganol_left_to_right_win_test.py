@@ -2,8 +2,7 @@ import pytest
 import sys
 import os
 
-sys.path.insert(0, os.path.abspath("lib"))
-
+sys.path.insert(0, os.path.abspath("/gym-connect4/gym_connect4/envs/lib"))
 import connect4 as c4
 
 def test_diaganol_win_for_player1_from_bottom_left_corner():

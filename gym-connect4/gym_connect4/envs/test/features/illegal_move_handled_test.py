@@ -2,13 +2,12 @@ import pytest
 import sys
 import os
 
-sys.path.insert(0, os.path.abspath("lib"))
-
+sys.path.insert(0, os.path.abspath("/gym-connect4/gym_connect4/envs/lib"))
 import connect4 as c4
 
-def test_column_full_handled_again():
+def test_illegal_move_prompts_for_legal_move():
     output = []
-    input_values = [1,1,1,1,1,1,1,2,3,2,3,2,3,2]
+    input_values = [1,8,2,1,2,1,2,1]
 
     def mock_input(s):
         output.append(s)
@@ -20,4 +19,4 @@ def test_column_full_handled_again():
     game = c4.Connect4()
     game.start()
 
-    assert output.count("That column is full, please choose again.") == 1
+    assert output.count("Please enter a number from 1-7") == 1

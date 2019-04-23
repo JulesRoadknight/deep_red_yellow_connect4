@@ -2,7 +2,7 @@ import gym, os, sys
 from gym import error, spaces, utils
 from gym.utils import seeding
 import random
-print(sys.path.insert(0, os.path.abspath("gym_connect4/envs/lib")))
+print(sys.path.insert(0, os.path.abspath("gym-connect4/gym_connect4/envs/lib")))
 print(sys.path)
 from connect4 import Connect4
 class Connect4Env(gym.Env):
