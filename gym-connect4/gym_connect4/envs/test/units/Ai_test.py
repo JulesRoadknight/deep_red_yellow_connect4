@@ -13,26 +13,4 @@ def test_Can_make_a_move():
 
     com = Ai(Moves())
     number = com.move()
-    assert number >= 0 and number <= 7
-
-
-
-
-
-def move(self, player):
-    # Connect4 should do this
-    # self.show_board()
-    # do move
-    # while not self.legal_move
-    # A call to how we select eg Ai.select_move
-    # player_choice = int(input("Make your move: "))
-    #
-    if player_choice > 7 or player_choice < 1:
-            print("Please enter a number from 1-7")
-            self.move(player)
-    else:
-        if self.moves.legal_moves[player_choice-1] == "Full":
-            print("That column is full, please choose again.")
-            self.move(player)
-        else:
-            self.game_board.make_move(player, player_choice-1)
+    assert number >= 0 and number <= 6
