@@ -1,10 +1,14 @@
 import board
 import move
+from ai import Ai
 class Connect4():
 
     def __init__(self):
         self.game_board = board.Board()
         self.moves = self.game_board.moves
+        self.player1 = Ai(self.moves)
+        self.player2 = Ai(self.moves)
+
 
     def start(self):
         player = 2
