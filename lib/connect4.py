@@ -22,23 +22,26 @@ class Connect4():
         if not_over == True:
             print("It's a Draw!")
         else:
-            self.show_board(self)
+            self.show_board()
             print(f'Player {player} wins')
 
     def show_board(self):
+        string = ""
+        i = len(self.game_board.game_board)-1
         while i > -1:
-            print(self.game_board.game_board[i])
+            row = self.game_board.game_board[i]
+            for token in row:
+                string +=  f'|{token}|'
+            string += "\n"
             i -= 1
+        print(string)
 
     def gameover(self):
         return self.game_board.moves.check_win()
 
 
     def move(self, player):
-        i = len(self.game_board.game_board)-1
-        while i > -1:
-            print(self.game_board.game_board[i])
-            i -= 1
+        self.show_board()
         player_choice = int(input("Make your move: "))
         if player_choice > 7 or player_choice < 1:
                 print("Please enter a number from 1-7")
