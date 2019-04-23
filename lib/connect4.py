@@ -16,19 +16,19 @@ class Connect4():
             else:
                 player = 1
             self.move(player)
-            # print(self.show_board())
             not_over = not self.gameover()
             turn += 1
-        # self.show_board()
 
         if not_over == True:
             print("It's a Draw!")
         else:
-            self.show_board()
+            self.show_board(self)
             print(f'Player {player} wins')
 
     def show_board(self):
-        return self.game_board.show()
+        while i > -1:
+            print(self.game_board.game_board[i])
+            i -= 1
 
     def gameover(self):
         return self.game_board.moves.check_win()
@@ -49,4 +49,3 @@ class Connect4():
                 self.move(player)
             else:
                 self.game_board.make_move(player, player_choice-1)
-# comment for commit
