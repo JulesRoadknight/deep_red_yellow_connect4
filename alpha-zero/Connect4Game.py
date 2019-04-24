@@ -40,10 +40,9 @@ class Connect4Game(Game):
 
     def getNextState(self, board, player, action):
         print("getNextState")
-        print(board)
+        print(action)
         b = self._playBoard(board)[0]
         b.make_move(player, action)
-        print(np.array(b.show()))  
         return np.array(b.show()), -player
 
     def getValidMoves(self, board, player):
