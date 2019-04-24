@@ -1,9 +1,9 @@
 import sys
-sys.path.append('../alpha-zero-general/', '../')
+from Connect4Game import Connect4Game as Game
+sys.path.append('../alpha-zero-general/')
 from Coach import Coach
 from utils import *
 from connect4.tensorflow.NNet import NNetWrapper as nn
-import Connect4Game as Game
 
 args = dotdict({
     'numIters': 1000,
@@ -23,7 +23,7 @@ args = dotdict({
 })
 
 if __name__=="__main__":
-    g = Game(6)
+    g = Game()
     nnet = nn(g)
 
     if args.load_model:

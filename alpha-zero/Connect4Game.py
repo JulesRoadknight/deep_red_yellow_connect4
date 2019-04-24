@@ -1,43 +1,44 @@
 import sys
 import numpy as np
-sys.path.append('../alpha-zero-general/', '../gym-connect4/gym_connect4/envs/lib/')
+sys.path.append('../alpha-zero-general/')
+from Game import Game
+sys.path.append('../gym-connect4/gym_connect4/envs/lib/')
 import board
 import move
-from Game import Game
+
 
 class Connect4Game(Game):
     #implements the alpha-zero-general Game interface
 
     def __init__(self):
-        Connect4.__init__(self)
+        Game.__init__(self)
         self._base_board = board.Board()
-        pass
 
     def _playBoard(self, board):
         b = board.Board()
-        (m, n) = board.shape
+        (m, n) = b.show().shape
         player = None
         for w in range(0, n):
             for h in range(0, m):
-                value = board[h][w]    
+                value = board[h][w]
                 if not b.moves.check_win() and value != 0:
                     b.make_move(value, w)
                     player = value
-                    
+
         return (b, player)
 
     def getInitBoard(self):
         return self._base_board
 
     def getBoardSize(self):
-        return self._base_board.show().shape
+        return (len(self._base_board.show()), len(self._base_board.show()[0]))
 
     def getActionSize(self):
-        return self._base_board.show().shape[1]
+        return len(self._base_board.show()[0])
 
     def getNextState(self, board, player, action):
         b = self._playBoard(board)[0]
-        b.make_move(player, action)   
+        b.make_move(player, action)
         return (b.game_board, -player)
 
     def getValidMoves(self, board, player):
@@ -45,7 +46,7 @@ class Connect4Game(Game):
         return self._base_board[0] == 0
 
     def getGameEnded(self, board, player):
-        (b, winning_player) = self._playBoard(board)                
+        (b, winning_player) = self._playBoard(board)
 
         if b.moves.check_win():
             if winning_player == player:
@@ -74,4 +75,4 @@ def display(board):
     print(" -----------------------")
     print(' '.join(map(str, range(len(board[0])))))
     print(board)
-    print(" -----------------------")    
+    print(" -----------------------")
