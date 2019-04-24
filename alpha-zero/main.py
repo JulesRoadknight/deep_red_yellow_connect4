@@ -1,3 +1,4 @@
+import sys
 sys.path.append('../alpha-zero-general/', '../')
 from Coach import Coach
 from utils import *
