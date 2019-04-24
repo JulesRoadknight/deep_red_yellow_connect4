@@ -2,7 +2,7 @@ import sys
 from Connect4Game import Connect4Game as Game
 sys.path.append('../alpha-zero-general/')
 from Coach import Coach
-from utils import *
+from utils import dotdict
 from connect4.tensorflow.NNet import NNetWrapper as nn
 
 args = dotdict({
