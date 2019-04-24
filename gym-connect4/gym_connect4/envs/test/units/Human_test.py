@@ -3,10 +3,8 @@ import sys
 import os
 import human
 from human import Human
-from board import Board
 
-sys.path.insert(0, os.path.abspath("lib"))
-
+sys.path.insert(0, os.path.abspath("gym-connect4/gym_connect4/envs/lib"))
 def test_player_Can_make_a_move():
     output = []
     input_values = ["7"]

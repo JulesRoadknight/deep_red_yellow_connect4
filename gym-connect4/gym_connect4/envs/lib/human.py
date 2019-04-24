@@ -2,8 +2,9 @@ class Human():
 
     def __init__(self, moves):
         self.moves = moves
+
     def move(self):
-        choice = int(input("Make your move: "))
+        choice = int(input("Make your move Human: "))
         if not self.legal(choice):
             choice = int(input("Please make a legal move: "))
         return choice -1

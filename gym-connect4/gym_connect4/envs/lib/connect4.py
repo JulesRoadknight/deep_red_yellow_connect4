@@ -1,6 +1,7 @@
 import board
 import move
 from ai import Ai
+import human
 class Connect4():
 
     def __init__(self):
@@ -9,17 +10,25 @@ class Connect4():
         self.player1 = Ai(self.moves)
         self.player2 = Ai(self.moves)
 
+    def test(self, input_values):
+        def mock_input(s):
+            print(s)
+            return input_values.pop(0)
+        human.input = mock_input
 
     def start(self):
+        self.players()
         player = 2
         not_over = True
         turn = 1
         while not_over and turn <= 42 :
             if player == 1 :
                 player = 2
+                self.game_board.make_move(2, self.player2.move())
             else:
                 player = 1
-            self.move(player)
+                self.game_board.make_move(1, self.player1.move())
+            self.show_board()
             not_over = not self.gameover()
             turn += 1
 
@@ -43,16 +52,7 @@ class Connect4():
     def gameover(self):
         return self.game_board.moves.check_win()
 
-
-    def move(self, player):
-        self.show_board()
-        player_choice = int(input("Make your move: "))
-        if player_choice > 7 or player_choice < 1:
-                print("Please enter a number from 1-7")
-                self.move(player)
-        else:
-            if self.moves.legal_moves[player_choice-1] == "Full":
-                print("That column is full, please choose again.")
-                self.move(player)
-            else:
-                self.game_board.make_move(player, player_choice-1)
+    def players(self):
+        if input("Player 1 is a Human or AI?") == "Human" : self.player1 = human.Human(self.moves)
+        if input("Player 2 is a Human or AI?") == "Human" : self.player2 = human.Human(self.moves)
+        return
