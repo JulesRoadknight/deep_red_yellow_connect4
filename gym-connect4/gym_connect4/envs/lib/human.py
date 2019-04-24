@@ -5,7 +5,7 @@ class Human():
 
     def move(self):
         choice = int(input("Make your move Human: "))
-        if not self.legal(choice):
+        while not self.legal(choice):
             choice = int(input("Please make a legal move: "))
         return choice -1
 
