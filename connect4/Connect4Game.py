@@ -2,6 +2,7 @@ import sys
 import numpy as np
 from connect4 import Connect4
 import board
+import move
 
 sys.path.append('..')
 
@@ -14,6 +15,7 @@ class Connect4Game(Connect4):
     def __init__(self, height=0, width=0, win_length=0, np_pieces=0):
         Connect4.__init__(self)
         self.base_board = board.Board()
+
         # print(self.base_board)
         self.base_board_height = len(self.base_board.show())
         print("This is the game board height:")
@@ -31,7 +33,8 @@ class Connect4Game(Connect4):
         self.base_board_np_pieces = np_pieces
 
     def getInitBoard(self):
-        return True
+        return len(self.base_board.moves.player1 + self.base_board.moves.player2)
 
+        #sum of player1 move and player 2 moves
 c4 = Connect4Game(Connect4)
-print(c4)
+print(c4.getInitBoard())
