@@ -1,0 +1,3 @@
+[submodule "alpha-zero-general"]
+	path = alpha-zero-general
+	url = https://github.com/suragnair/alpha-zero-general.git
