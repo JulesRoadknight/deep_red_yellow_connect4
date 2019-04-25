@@ -58,7 +58,6 @@ class Connect4Game(Game):
         #print("getGameEnded")
         (b, winning_player) = self._playBoard(board)
         if b.moves.check_win():
-            print(board)
             if winning_player == player:
                 return +1
             elif winning_player == -player:
