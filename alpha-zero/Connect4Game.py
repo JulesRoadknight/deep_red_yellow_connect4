@@ -12,7 +12,6 @@ class Connect4Game(Game):
     #implements the alpha-zero-general Game interface
 
     def __init__(self):
-        print("init")
         Game.__init__(self)
         self._base_board = Board()
 
@@ -31,32 +30,31 @@ class Connect4Game(Game):
         return (b, player)
 
     def getInitBoard(self):
-        print("getInitBoard")
+        #print("getInitBoard")
         return np.array(self._base_board.show())
 
     def getBoardSize(self):
-        print("getBoardSize")
+        #print("getBoardSize")
         return (len(self._base_board.show()), len(self._base_board.show()[0]))
 
     def getActionSize(self):
-        print("getActionSize")
+        #print("getActionSize")
         return len(self._base_board.show()[0])
 
     def getNextState(self, board, player, action):
-        print("getNextState")
-        print(action)
+        #print("getNextState")
         b = self._playBoard(np.copy(board))[0]
         b.make_move(player, action)
         return np.array(b.show()), -player
 
     def getValidMoves(self, board, player):
-        print("getValidMoves")
+        #print("getValidMoves")
         "Any zero value in top row in a valid move"
         b = self._playBoard(board)[0]
         return np.array(b.show())[len(board)-1] == 0
 
     def getGameEnded(self, board, player):
-        print("getGameEnded")
+        #print("getGameEnded")
         (b, winning_player) = self._playBoard(board)
         if b.moves.check_win():
             if winning_player == player:
@@ -69,17 +67,17 @@ class Connect4Game(Game):
 
     def getCanonicalForm(self, board, player):
         # Flip player from 1 to -1
-        print("getCanonicalForm")
+        #print("getCanonicalForm")
         return board * player
 
     def getSymmetries(self, board, pi):
-        print("getSymmetries")
+        #print("getSymmetries")
         """Board is left/right board symmetric"""
         return [(np.array(board), pi), (np.array(board)[:, ::-1], pi[::-1])]
 
     def stringRepresentation(self, board):
         b = self._playBoard(board)
-        return str(b)
+        return board.tostring()
 
 def display(board):
     print(" -----------------------")
