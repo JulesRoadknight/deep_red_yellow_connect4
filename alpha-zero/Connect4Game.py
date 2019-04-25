@@ -76,8 +76,8 @@ class Connect4Game(Game):
         return [(np.array(board), pi), (np.array(board)[:, ::-1], pi[::-1])]
 
     def stringRepresentation(self, board):
-        b = self._playBoard(board)
-        return board.tostring()
+        b = self._playBoard(board)[0]
+        return np.array(b.show()).tostring()
 
 def display(board):
     print(" -----------------------")
