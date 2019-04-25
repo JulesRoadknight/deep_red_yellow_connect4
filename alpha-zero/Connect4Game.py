@@ -1,4 +1,5 @@
 import sys
+import copy
 import numpy as np
 sys.path.append('../alpha-zero-general/')
 from Game import Game
@@ -41,7 +42,8 @@ class Connect4Game(Game):
     def getNextState(self, board, player, action):
         print("getNextState")
         print(action)
-        b = self._playBoard(board)[0]
+        b = self._playBoard(np.copy(board))[0]
+        self._base_board = copy.copy(b)
         b.make_move(player, action)
         return np.array(b.show()), -player
 
@@ -49,12 +51,13 @@ class Connect4Game(Game):
         print("getValidMoves")
         "Any zero value in top row in a valid move"
         b = self._playBoard(board)[0]
-        return np.array(b.show())[0] == 0
+        self._base_board = copy.copy(b)
+        return np.array(b.show())[len(board)-1] == 0
 
     def getGameEnded(self, board, player):
         print("getGameEnded")
         (b, winning_player) = self._playBoard(board)
-
+        self._base_board = copy.copy(b)
         if b.moves.check_win():
             if winning_player == player:
                 return +1
