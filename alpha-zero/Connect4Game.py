@@ -21,12 +21,13 @@ class Connect4Game(Game):
             board = np.array(self._base_board.show())
 
         player = None
-        for w in range(0, len(board[0])):
-            for h in range(0, len(board)):
+        for h in range(0, len(board)):
+            for w in range(0, len(board[0])):
                 value = board[h][w]
                 if not b.moves.check_win() and value != 0:
                     b.make_move(value, w)
                     player = value
+        b.base_board = board       
         return (b, player)
 
     def getInitBoard(self):
@@ -57,17 +58,21 @@ class Connect4Game(Game):
         #print("getGameEnded")
         (b, winning_player) = self._playBoard(board)
         if b.moves.check_win():
+            print(board)
             if winning_player == player:
                 return +1
             elif winning_player == -player:
                 return -1
+        elif not np.any(np.array(b.show()) == 0): 
+            # draw has very little value.
+            return 1e-4       
         else:
             # 0 used to represent unfinished game.
             return 0
 
     def getCanonicalForm(self, board, player):
-        # Flip player from 1 to -1
         #print("getCanonicalForm")
+        # Flip player from 1 to -1
         return board * player
 
     def getSymmetries(self, board, pi):
@@ -77,7 +82,7 @@ class Connect4Game(Game):
 
     def stringRepresentation(self, board):
         b = self._playBoard(board)[0]
-        return str(np.array(b.show()))
+        return str(board)
 
 def display(board):
     print(" -----------------------")
