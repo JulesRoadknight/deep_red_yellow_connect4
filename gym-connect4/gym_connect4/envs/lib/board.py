@@ -15,4 +15,5 @@ class Board():
 
     def make_move(self, player, legal_move_index):
         coords = self.moves.save_move(player, legal_move_index)
-        self.game_board[coords[1]][coords[0]] = player
+        if coords is not None:
+            self.game_board[coords[1]][coords[0]] = player

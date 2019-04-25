@@ -9,14 +9,18 @@ class Move():
         if player == 1:
             move = self.legal_moves.pop(legal_move_index)
             self.player1.insert(0, move)
-            if move[1] == 5:
+            if move == "Full":
+                return None
+            elif move[1] == 5:
                 self.legal_moves.insert(legal_move_index, "Full")
             else:
                 self.legal_moves.insert(legal_move_index, [move[0],move[1]+1])
         else :
             move = self.legal_moves.pop(legal_move_index)
             self.player2.insert(0, move)
-            if move[1] == 5:
+            if move == "Full":
+                return None
+            elif move[1] == 5:
                 self.legal_moves.insert(legal_move_index, "Full")
             else:
                 self.legal_moves.insert(legal_move_index, [move[0],move[1]+1])
