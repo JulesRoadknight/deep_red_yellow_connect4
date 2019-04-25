@@ -32,27 +32,17 @@ class Move():
         return False
 
     def check_vertical(self):
-        collum = []
-        total = 0
-        if self.player == 1:
-            for coords in self.player1:
-                if coords[1] != 3 : continue
-                valid_coord = coords[0]
-                for co_ord in self.player1:
-                    if valid_coord == co_ord[0] : collum.append(co_ord)
-        else :
-            for coords in self.player2:
-                if coords[1] != 3 : continue
-                valid_coord = coords[0]
-                for co_ord in self.player2:
-                    if valid_coord == co_ord[0] : collum.append(co_ord)
-        for coords in collum:
-            total += coords[1]
 
-        if total == 6 or total == 10 or total == 14:
-            return True
+        if self.player == 1:
+            last_move = self.player1[0]
+            moves_to_check = self.player1
         else:
-            return False
+            last_move = self.player2[0]
+            moves_to_check = self.player2
+
+        if moves_to_check.count([last_move[0], last_move[1]-1]) == 1 and moves_to_check.count([last_move[0], last_move[1]-2]) == 1 and moves_to_check.count([last_move[0], last_move[1]-3]) == 1 :
+            return True
+        return False
 
     def check_horizontal(self):
         row = []
