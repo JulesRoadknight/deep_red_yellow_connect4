@@ -4,18 +4,14 @@ sys.path.append('../gym-connect4/gym_connect4/envs/lib/')
 import board
 import move
 import human
-sys.path.append('../alpha-zero-general/')
-from MCTS import MCTS
-from utils import dotdict
-from connect4.tensorflow.NNet import NNetWrapper as NNet
 
 class Connect4():
 
     def __init__(self):
         self.game_board = board.Board()
         self.moves = self.game_board.moves
-        self.player1 = AlphaZeroAI(self.game_board, 1)
-        self.player2 = AlphaZeroAI(self.game_board, 2)
+        self.player1 = AI(self.game_board, 1)
+        self.player2 = AI(self.game_board, 2)
 
     def test(self, input_values):
         def mock_input(s):

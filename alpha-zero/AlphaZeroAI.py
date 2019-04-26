@@ -1,18 +1,18 @@
 import os
 import sys
 import numpy as np
-from Connect4Game import Connect4Game
-sys.path.append('../alpha-zero-general/')
+from Connect4Game import Connect4Game as Game
+sys.path.insert(0, os.path.abspath('../alpha-zero-general/'))
 from MCTS import MCTS
 from utils import dotdict
-from connect4.tensorflow.NNet import NNetWrapper
+from connect4.tensorflow.NNet import NNetWrapper as NNet
 
 class AlphaZeroAI():
 
     def __init__(self, board=None, player=1):
         print("Debug")
-        self.g = Connect4Game()
-        self.n1 = NNet(g)
+        self.g = Game()
+        self.n1 = NNet(self.g)
         self.n1.load_checkpoint('./model/','connect4_best.pth.tar')
         self.args1 = dotdict({'numMCTSSims': 50, 'cpuct':1.0})
         self.mcts1 = MCTS(self.g, self.n1, self.args1)
