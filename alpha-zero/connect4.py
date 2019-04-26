@@ -39,8 +39,11 @@ class Connect4():
             print("It's a Draw!")
         else:
             self.show_board()
-            print('Player {0} wins'.format(player))
-
+            if player == 1 :
+                print('Player 2 wins')
+            else:
+                print('Player 1 wins')
+                
     def show_board(self):
         string = ""
         i = len(self.game_board.game_board)-1
