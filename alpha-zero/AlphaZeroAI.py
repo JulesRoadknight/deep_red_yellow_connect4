@@ -12,7 +12,7 @@ class AlphaZeroAI():
     def __init__(self, board=None, player=1):
         self.g = Game()
         self.n1 = NNet(self.g)
-        self.n1.load_checkpoint(os.getcwd() + '/model/','connect4.pth.tar')
+        self.n1.load_checkpoint(os.getcwd() + '/model/','best.pth.tar')
         self.args1 = dotdict({'numMCTSSims': 25, 'cpuct':1.0})
         self.mcts1 = MCTS(self.g, self.n1, self.args1)
         self.n1p = lambda x: np.argmax(self.mcts1.getActionProb(x, temp=0))
