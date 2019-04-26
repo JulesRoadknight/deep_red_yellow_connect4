@@ -10,14 +10,14 @@ from connect4.tensorflow.NNet import NNetWrapper as NNet
 class AlphaZeroAI():
 
     def __init__(self, board=None, player=1):
-        print("Debug")
         self.g = Game()
         self.n1 = NNet(self.g)
-        self.n1.load_checkpoint('./model/','connect4_best.pth.tar')
-        self.args1 = dotdict({'numMCTSSims': 50, 'cpuct':1.0})
+        self.n1.load_checkpoint(os.getcwd() + '/model/','connect4.pth.tar')
+        self.args1 = dotdict({'numMCTSSims': 25, 'cpuct':1.0})
         self.mcts1 = MCTS(self.g, self.n1, self.args1)
         self.n1p = lambda x: np.argmax(self.mcts1.getActionProb(x, temp=0))
-        self.moves = board.moves
+        self.board = board
+        self.moves = self.board.moves
         if player == 1:
             self.player = 1
         if player == 2: 
@@ -30,7 +30,8 @@ class AlphaZeroAI():
         return choice
 
     def select_move(self):
-        action = players[curPlayer+1](self.g.getCanonicalForm(np.array(self.board.show()), self.player))
+        action = self.n1p(self.g.getCanonicalForm(np.array(self.board.show()), self.player))
+        print('AI move: {0}'.format(action+1))
         return action
 
     def legal(self, choice):

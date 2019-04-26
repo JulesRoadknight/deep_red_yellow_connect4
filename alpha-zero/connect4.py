@@ -27,10 +27,10 @@ class Connect4():
         while not_over and turn <= 42 :
             if player == 1 :
                 player = 2
-                self.game_board.make_move(2, self.player2.move())
+                self.game_board.make_move(1, self.player1.move())
             else:
                 player = 1
-                self.game_board.make_move(1, self.player1.move())
+                self.game_board.make_move(-1, self.player2.move())
             self.show_board()
             not_over = not self.gameover()
             turn += 1
@@ -39,15 +39,21 @@ class Connect4():
             print("It's a Draw!")
         else:
             self.show_board()
-            #print(f'Player {player} wins')
+            print('Player {0} wins'.format(player))
 
     def show_board(self):
         string = ""
         i = len(self.game_board.game_board)-1
         while i > -1:
             row = self.game_board.game_board[i]
-            #for token in row:
-                #string +=  f'|{token}|'
+            for token in row:
+                if token == 1:
+                    string +=  '|1|'
+                elif token == -1:
+                    string +=  '|2|'
+                else:
+                    string +=  '|0|'        
+                
             string += "\n"
             i -= 1
         print(string)
