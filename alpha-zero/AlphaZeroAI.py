@@ -1,10 +1,11 @@
+import os
 import sys
+import numpy as np
 from Connect4Game import Connect4Game
 sys.path.append('../alpha-zero-general/')
 from MCTS import MCTS
-from connect4.tensorflow.NNet import NNetWrapper as NNet
-from utils import *
-import numpy as np
+from utils import dotdict
+from connect4.tensorflow.NNet import NNetWrapper
 
 class AlphaZeroAI():
 
@@ -37,4 +38,3 @@ class AlphaZeroAI():
             return False
         return True
       
-temp = AlphaZeroAI()

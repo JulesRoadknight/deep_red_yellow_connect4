@@ -1,14 +1,21 @@
+import sys
+from AlphaZeroAI import AlphaZeroAI as AI
+sys.path.append('../gym-connect4/gym_connect4/envs/lib/')
 import board
 import move
-from ai import Ai
 import human
+sys.path.append('../alpha-zero-general/')
+from MCTS import MCTS
+from utils import dotdict
+from connect4.tensorflow.NNet import NNetWrapper as NNet
+
 class Connect4():
 
     def __init__(self):
         self.game_board = board.Board()
         self.moves = self.game_board.moves
-        self.player1 = Ai(self.moves)
-        self.player2 = Ai(self.moves)
+        self.player1 = AlphaZeroAI(self.game_board, 1)
+        self.player2 = AlphaZeroAI(self.game_board, 2)
 
     def test(self, input_values):
         def mock_input(s):
@@ -36,15 +43,15 @@ class Connect4():
             print("It's a Draw!")
         else:
             self.show_board()
-            print(f'Player {player} wins')
+            #print(f'Player {player} wins')
 
     def show_board(self):
         string = ""
         i = len(self.game_board.game_board)-1
         while i > -1:
             row = self.game_board.game_board[i]
-            for token in row:
-                string +=  f'|{token}|'
+            #for token in row:
+                #string +=  f'|{token}|'
             string += "\n"
             i -= 1
         print(string)
@@ -56,3 +63,7 @@ class Connect4():
         if input("Player 1 is a Human or AI?") == "Human" : self.player1 = human.Human(self.moves)
         if input("Player 2 is a Human or AI?") == "Human" : self.player2 = human.Human(self.moves)
         return
+
+if __name__ == "__main__":
+    c4 = Connect4()
+    c4.start()        
