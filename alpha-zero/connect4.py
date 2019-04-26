@@ -62,9 +62,8 @@ class Connect4():
         return self.game_board.moves.check_win()
 
     def players(self):
-        input_func = input
-        if input_func("Player 1 is a Human or AI?") == "Human" : self.player1 = human.Human(self.moves)   
-        if input_func("Player 1 is a Human or AI?") == "Human" : self.player2 = human.Human(self.moves)
+        if raw_input("Player 1 is a Human or AI?") == "Human" : self.player1 = human.Human(self.moves)   
+        if raw_input("Player 1 is a Human or AI?") == "Human" : self.player2 = human.Human(self.moves)
         return
 
 if __name__ == "__main__":
