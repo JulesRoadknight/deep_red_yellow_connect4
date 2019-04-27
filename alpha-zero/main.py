@@ -1,6 +1,7 @@
+import os
 import sys
 from Connect4Game import Connect4Game as Game
-sys.path.append('../alpha-zero-general/')
+sys.path.insert(0, os.path.abspath('../alpha-zero-general/'))
 from Coach import Coach
 from utils import dotdict
 from connect4.tensorflow.NNet import NNetWrapper as nn
